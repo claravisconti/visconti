@@ -10,11 +10,14 @@
 // }
 
 var numeroUno = Number(prompt("Ingrese un número"));
-var numeroDos = Number(prompt("Ingrese otro número"));
+//var numeroDos = Number(prompt("Ingrese otro número"));
 
-if ((numeroUno !== "") && (numeroDos != "")) {
-    alert(`${numeroUno} + ${numeroDos} es ${numeroUno + numeroDos}`);
-} else {
-    alert("Debe existir un valor")
-}
+// if ((numeroUno !== "") && (numeroDos != "")) {
+//     alert(`${numeroUno} + ${numeroDos} es ${numeroUno + numeroDos}`);
+// } else {
+//     alert("Debe existir un valor")
+// }
 
+for (let index = 1; index <= numeroUno; index++) {
+    alert(`${numeroUno + index}`);
+}   
