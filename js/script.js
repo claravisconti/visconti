@@ -1,23 +1,55 @@
-// var numeroUno = prompt("Ingrese un número");
-// var numeroDos = prompt("Ingrese otro número");
+//Calcular valor final de un producto en funcion de impuestos y descuentos.
 
-// // alert(`${numeroUno} + ${numeroDos} es ${numeroUno + numeroDos}`);
+const carrito = [
+    {
+        id: 1,
+        nombre: "Pollera Clara",
+        marca: "Bloom",
+        precio: 100,
+        temporada: 2021
+    },
+    {
+        id: 2,
+        nombre: "Pollera Clara",
+        marca: "Bloom",
+        precio: 200,
+        temporada: 2020
+    },
+    {
+        id: 3,
+        nombre: "Pollera Clara",
+        marca: "Bloom",
+        precio: 300, 
+        temporada: 2020
+    },
+]
 
-// if ((numeroUno !== "") && (numeroDos != "")) {
-//     alert(`${numeroUno} + ${numeroDos} es ${(Number(numeroUno) + Number(numeroDos))}`);
-// } else {
-//     alert("Debe ingresar dos números")
+// function factura(productos) {
+//     let suma = 0;
+//     for (let producto of productos) {
+//         if (producto.temporada == 2020) {
+//             //suma = suma + producto.precio
+//             suma += producto.precio/2
+//         } else {
+//             suma = producto.precio
+//         }
+//     }
+//     return suma
 // }
 
-var numeroUno = Number(prompt("Ingrese un número"));
-//var numeroDos = Number(prompt("Ingrese otro número"));
+function factura(productos) {
 
-// if ((numeroUno !== "") && (numeroDos != "")) {
-//     alert(`${numeroUno} + ${numeroDos} es ${numeroUno + numeroDos}`);
-// } else {
-//     alert("Debe existir un valor")
-// }
+    //Aplicar descuentos
+    let productosDescuento = productos.map(producto => {
+        return producto.temporada == 2020 ? producto.precio / 2 : producto.precio
+    })
+    //Suma s/IVA
+    let sumaTotal = productosDescuento.reduce((acumulador, valorActual) => (acumulador + valorActual))
+    let IVA = (0.21 * sumaTotal)
+    //Final c/IVA
+    return sumaTotal + IVA
 
-for (let index = 1; index <= numeroUno; index++) {
-    alert(`${numeroUno + index}`);
-}   
+}
+
+console.log(factura(carrito))
+
