@@ -1,7 +1,6 @@
 //Clase
 class Producto {
-    constructor(id, nombre, marca, precio, temporada) {
-        this.id = id;
+    constructor(nombre, marca, precio, temporada) {
         this.nombre = nombre;
         this.marca = marca;
         this.precio = precio;
@@ -14,18 +13,46 @@ class Producto {
             return this.precio
         }
     }
+    //1. Add product
+    addToCart(producto) {
+        return carrito.push(
+            producto
+        )
+    }
+    //2. Find product
+    findProduct(product) {
+        return carrito.find(prod => prod.nombre === product);
+    }
+
+    //3. Delete product
+    deleteProduct(product) {
+        return carrito.filter(prod => prod.nombre !== product);
+    }
+
+    //4. Order by price
+    orderByPrice = carrito.sort(function (primerItem, segundoItem) {
+        return parseFloat(primerItem.precio) - parseFloat(segundoItem.precio);
+    });
 }
 
-//Prompt 
-let id = prompt("id")
-let nombre = prompt("nombre")
-let marca = prompt("marca")
-let precio = prompt("precio")
-let temporada = prompt("temporada: nuevo o anterior")
+//EJERCICIO 8
+//Mostrar elementos en el DOM
+Producto.map(item => {
+    let listaProd = document.getElementById("listaProductos")
+    let lista = document.createElement("li");
+    lista.textContent = item.nombre;
+    listaProd.appendChild(lista)
+})
 
-const producto2 = new Producto(id, nombre, marca, precio, temporada);
+//Obtener elementos del form
+let formProd = document.getElementById("form-productos")
+let nombre = document.getElementById("nombre-producto")
+let marca = document.getElementById("marca-producto")
+let precio = document.getElementById("precio-producto")
+let temporada = document.getElementById("temporada-producto")
 
-console.log(producto2)
-console.log(producto2.descuento())
+//Escuchar evento submit del form
+formProd.addEventListener("submit", (event) => {
 
 
+})
