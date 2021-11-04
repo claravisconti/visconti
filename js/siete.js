@@ -21,9 +21,7 @@ const carrito = [
 
 //1. Add product
 function addToCart(producto) {
-    return carrito.push(
-        producto
-    )
+    carrito.push(producto)
 }
 
 //2. Find product
@@ -62,13 +60,13 @@ let temporada = document.getElementById("temporada-producto")
 //Escuchar evento submit del form
 formProd.addEventListener("submit", (event) => {
     //event.preventDefault();
-    const nuevo = {
+    let nuevo = {
         nombre: nombre.value,
         marca: marca.value,
         precio: precio.value,
         temporada: temporada.value
     };
 
-    return addToCart(nuevo)
+    addToCart(nuevo)
 })
 
